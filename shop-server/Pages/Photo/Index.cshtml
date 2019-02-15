@@ -1,0 +1,18 @@
+﻿@page
+@model shop_server.Pages.Photo.IndexModel
+@{
+    ViewData["Title"] = "Upload";
+}
+
+<h1>Загрузка файлов</h1>
+
+<h3>Выберите файл для загрузки</h3>
+<form method="post" enctype="multipart/form-data">
+    <input asp-for="uploadedFile" type="file" name="uploadedFile" /><br>
+
+    <input type="submit" value="Загрузить" />
+</form>
+
+
+<h3>@Model.Path</h3>
+<h3>@Model.FileName</h3>
