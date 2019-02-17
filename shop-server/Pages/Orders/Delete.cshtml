@@ -19,10 +19,16 @@
             @Html.DisplayFor(model => model.Order.Customer)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Order.Delivery)
+            @Html.DisplayNameFor(model => model.Order.ProdIds)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.Delivery)
+            @Html.DisplayFor(model => model.Order.ProdIds)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.DeliveryAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.DeliveryAddress)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Order.Status)

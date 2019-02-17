@@ -34,7 +34,7 @@ namespace shop_server.Controllers
                 var result = await _signInManager.PasswordSignInAsync(login.Email, login.Password, true, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    return Ok("Welcome");
+                    return Ok(User.Identity.IsAuthenticated);
                 }
 
             }
@@ -62,7 +62,7 @@ namespace shop_server.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return Ok("Welcome");
+                    return Ok(User.Identity.IsAuthenticated);
                 }
                foreach(var error in result.Errors)
                 {

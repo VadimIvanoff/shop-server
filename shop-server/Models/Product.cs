@@ -13,7 +13,7 @@ namespace shop_server.Models
         [MaxLength(25, ErrorMessage = "Не более 25 символов")]
         public string Name { get; set; }
         [Display(Name = "Описание")]
-        [MinLength(35, ErrorMessage = "Не менее 35 символов")]
+      
         [MaxLength(200, ErrorMessage = "Не более 200 символов")]
         public string Description { get; set; }
         [Display(Name = "Рейтинг")]

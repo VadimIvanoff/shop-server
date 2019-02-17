@@ -17,7 +17,10 @@
                 @Html.DisplayNameFor(model => model.Order[0].Customer)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Order[0].Delivery)
+                @Html.DisplayNameFor(model => model.Order[0].ProdIds)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].DeliveryAddress)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Order[0].Status)
@@ -32,7 +35,10 @@
                 @Html.DisplayFor(modelItem => item.Customer)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Delivery)
+                @Html.DisplayFor(modelItem => item.ProdIds)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryAddress)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
