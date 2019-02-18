@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using shop_server.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace shop_server
 {
@@ -29,7 +30,7 @@ namespace shop_server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -47,8 +48,8 @@ namespace shop_server
 
             services.AddMvc().AddRazorPagesOptions(options =>
             {
-                options.Conventions.AuthorizeFolder("/Products");
-                options.Conventions.AuthorizeFolder("/Categories");
+                //options.Conventions.AuthorizeFolder("/Products");
+                //options.Conventions.AuthorizeFolder("/Categories");
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -58,7 +59,7 @@ namespace shop_server
         {
             app.UseCors(builder =>
             {
-                builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+                builder.WithOrigins("http://localhost:4200", "http://localhost:5000").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
             });
             if (env.IsDevelopment())
             {
