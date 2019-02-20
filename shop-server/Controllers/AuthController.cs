@@ -34,7 +34,8 @@ namespace shop_server.Controllers
                 var result = await _signInManager.PasswordSignInAsync(login.Email, login.Password, true, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    return Ok(User.Identity.IsAuthenticated);
+                    var user = await UserManager.FindByEmailAsync(login.Email);
+                    return Ok(new User { Name = user.UserName});
                 }
 
             }
@@ -57,12 +58,12 @@ namespace shop_server.Controllers
             List<string> errors = new List<string>();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { Email = newUser.Email, UserName = newUser.Email };
-                var result = await UserManager.CreateAsync(user, newUser.Password);
+                var identityUser = new IdentityUser { Email = newUser.Email, UserName = newUser.Email };
+                var result = await UserManager.CreateAsync(identityUser, newUser.Password);
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return Ok(User.Identity.IsAuthenticated);
+                    var user = await UserManager.FindByEmailAsync(newUser.Email);
+                    return Ok(new User { Name = user.UserName });
                 }
                foreach(var error in result.Errors)
                 {
